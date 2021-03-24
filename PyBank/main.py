@@ -1,8 +1,8 @@
-# Import Modules
+#Import Modules
 import os
 import csv
 
-# Read in CSV File
+#Read in CSV File
 
 csvpath = os.path.join('Resources','03-Python_HW_Instructions_PyBank_Resources_budget_data.csv')
 #print(csvpath)
