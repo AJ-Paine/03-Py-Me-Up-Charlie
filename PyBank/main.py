@@ -2,18 +2,13 @@
 import os
 import csv
 
-#Read in CSV File
-
+#Read in CSV File and store headers
 csvpath = os.path.join('Resources','03-Python_HW_Instructions_PyBank_Resources_budget_data.csv')
-#print(csvpath)
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-
-    #Print Headers
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-
+    
     #Define Variables
     Total_Months = 0
     Total = 0
@@ -29,12 +24,13 @@ with open(csvpath) as csvfile:
     Min_Profit_Change = 0
     Max_Profit_Change_Month = str()
 
+    #Use for loop to calculate total months, total profits, and max/min profit months
     for row in csvreader:
         #Find Total Months
         Total_Months += 1
         #Find Total Profits/Losses
         Total += int(row[1])
-        #Find Average Change
+        #Find max and mini profit changes with their corresponding months
         Current_Month_Profit = int(row[1])
         Current_Month = str(row[0])
         Current_Month_Profit_Change = Current_Month_Profit - Previous_Month_Profit
@@ -47,8 +43,10 @@ with open(csvpath) as csvfile:
         Running_Profit_Change += Current_Month_Profit_Change
         Previous_Month_Profit = int(row[1])
         Previous_Month = str(row[0])
+
 #Calculate Average Chanage
     Average_Change = round(Running_Profit_Change / (Total_Months-1), 2)
+
 # #Print OutPut Analysis
     print('Financial Analysis')
     print('------------------------')
@@ -70,6 +68,3 @@ with open(output_path, 'w', newline='') as csvfile:
     csvwriter.writerow([f'Average Change: ${Average_Change}'])
     csvwriter.writerow([f'Greatest Increase in Profits: {Max_Profit_Change_Month} (${Max_Profit_Change})'])
     csvwriter.writerow([f'Greatest Decrease in Profits: {Min_Profit_Change_Month} (${Min_Profit_Change})'])
-
-
-

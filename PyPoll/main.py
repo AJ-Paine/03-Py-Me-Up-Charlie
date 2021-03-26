@@ -2,14 +2,14 @@
 import os
 import csv
 
-#Read in CSV File
+#Read in CSV File and store headers
 csvpath = os.path.join('Resources', '03-Python_HW_Instructions_PyPoll_Resources_election_data.csv')
 
 with open(csvpath) as csvfile:
     pypoll_data = csv.reader(csvfile, delimiter=',')
     csv_header = next(pypoll_data)
 
-    
+    #Define variables
     Total_Votes = 0
     Candidate_List = []
     Khan_Votes = 0
@@ -45,6 +45,7 @@ with open(csvpath) as csvfile:
     Li_perc = format(Li_Votes/Total_Votes*100, ".3f")
     OTooley_perc = format(OTooley_Votes/Total_Votes*100, ".3f")
 
+    #Determine winner
     if Khan_perc > Correy_perc and Khan_perc > Li_perc and Khan_perc > OTooley_perc:
         winner = "Khan"
     elif Correy_perc > Li_perc and Correy_perc > OTooley_perc:
@@ -93,5 +94,3 @@ with open(csvpath) as csvfile:
         csvwriter.writerow(['---------------------------'])
         csvwriter.writerow([f'Winner: {winner}'])
         csvwriter.writerow(['---------------------------'])
-        
-
