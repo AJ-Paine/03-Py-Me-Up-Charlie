@@ -1,6 +1,6 @@
 # Py-Me-Up-Charlie
 
-This repository was created for the DU Data Analytics Bootcamp home.
+This repository was created for the DU Data Analytics Bootcamp homework.
 
 I created two scripts in python for this challenge.
 
